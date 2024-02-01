@@ -2,9 +2,8 @@ import hydra
 import time
 import torch
 import torch.nn.functional as F
-import torch_geometric.transforms as T
 
-from torch_geometric.datasets import Planetoid
+from src.data import get_dataset
 from torch_geometric.logging import log
 from src.models import GCN
 from src.sampler import IdentitySampler
@@ -16,10 +15,7 @@ def main(cfg):
         torch.manual_seed(cfg.seed)
     if torch.cuda.is_available():
         device = torch.device("cuda")
-    dataset = Planetoid(
-        root="data", name="Cora", split="full", transform=T.NormalizeFeatures()
-    )
-    # loader = BatchGraphLoader(dataset, batch_size=cfg.batch_size, num_neighbor_layers=2)
+    dataset = dataset = dataset = get_dataset(cfg.dataset)
     sampler = IdentitySampler(dataset, batch_size=cfg.batch_size)
     model = GCN(
         in_channels=dataset.num_features,

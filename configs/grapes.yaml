@@ -9,17 +9,21 @@
 #       consider_magic_clip: true
 #     direction: maximize
 #     study_name: minigrid
-#     storage: null
+#     storage: null§
 #     n_trials: 100
 #     n_jobs: 1
 #     max_failure_rate: 0.0
 #     params:
 #       lr: range(1e-4, 1e-3, 1e-4)
 
-dataset: "pubmed"
+dataset: "cora"
 seed: 2138
 test_full: True
-epochs: 100
+epochs: 30
 batch_size: 512
-lr: 1e-3
+sample_size: 16
+lr_gfnet: 1e-4
+lr_gcn: 1e-3
 hidden_channels: 256
+alpha: 1e4
+beta: 0.9

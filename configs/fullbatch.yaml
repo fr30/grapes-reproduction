@@ -16,8 +16,8 @@
 #     params:
 #       lr: range(1e-4, 1e-3, 1e-4)
 
-dataset: "Cora"
-seed: null
+dataset: "pubmed"
+seed: 2138
 epochs: 50
-lr: 1e-3
+lr: 1e-2
 hidden_channels: 256

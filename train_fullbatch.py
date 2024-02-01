@@ -2,9 +2,8 @@ import hydra
 import time
 import torch
 import torch.nn.functional as F
-import torch_geometric.transforms as T
 
-from torch_geometric.datasets import Planetoid
+from src.data import get_dataset
 from torch_geometric.logging import log
 from src.models import GCN
 
@@ -15,9 +14,7 @@ def main(cfg):
         torch.manual_seed(cfg.seed)
     if torch.cuda.is_available():
         device = torch.device("cuda")
-    dataset = Planetoid(
-        root="data", split="full", name="Cora", transform=T.NormalizeFeatures()
-    )
+    dataset = dataset = get_dataset(cfg.dataset)
     data = dataset.data.to(device)
     model = GCN(
         in_channels=dataset.num_features,

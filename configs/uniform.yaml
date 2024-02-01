@@ -16,10 +16,11 @@
 #     params:
 #       lr: range(1e-4, 1e-3, 1e-4)
 
-dataset: "Cora"
-seed: null
-test_full: False
-epochs: 50
+# dataset: "pubmed"
+dataset: "flickr"
+seed: 2138
+test_full: True
+epochs: 30
 batch_size: 512
 sample_size: 16
 lr: 1e-3
